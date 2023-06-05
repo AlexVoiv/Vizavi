@@ -1,4 +1,4 @@
-package com.vizavi.application;
+package com.vizavi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
