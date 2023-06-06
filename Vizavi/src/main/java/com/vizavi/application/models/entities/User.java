@@ -2,6 +2,9 @@ package com.vizavi.application.models.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+import java.util.Set;
+
 @Data
 @Entity
 @Table(name = "users")
@@ -21,4 +24,14 @@ public class User {
 
     @Column (name = "address")
     private String address;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "users_products",
+            joinColumns = @JoinColumn (name = "users_id"),
+            inverseJoinColumns = @JoinColumn(name = "products_id"))
+    private Set<Product> products;
+
 }
