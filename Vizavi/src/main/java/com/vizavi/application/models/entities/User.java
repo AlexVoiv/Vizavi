@@ -1,12 +1,13 @@
 package com.vizavi.application.models.entities;
+
 import jakarta.persistence.*;
 import lombok.Data;
-//import org.springframework.data.annotation.Id;
 
 @Data
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -18,8 +19,8 @@ public class User {
     private String lastName;
 
     @Column (name = "email")
-
     private String email;
+
     @Column (name = "address")
     private String address;
 }

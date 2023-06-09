@@ -13,6 +13,7 @@ import lombok.Data;
 @Table(name = "products")
 public class Product {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -21,7 +22,7 @@ public class Product {
     private String name;
 
     @Column(name = "product_type")
-    private String productType;
+    private String type;
 
     @Column(name = "description")
     private String description;
