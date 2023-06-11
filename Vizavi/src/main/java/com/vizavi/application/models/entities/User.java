@@ -3,6 +3,9 @@ package com.vizavi.application.models.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+import java.util.Set;
+
 @Data
 @Entity
 @Table(name = "users")
@@ -12,15 +15,24 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column (name = "first_name")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column (name = "last_name")
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column (name = "email")
+    @Column(name = "email")
     private String email;
 
-    @Column (name = "address")
+    @Column(name = "address")
     private String address;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders;
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable (name = "users_products",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "products_id"))
+    private Set<Product> products;
+
 }
