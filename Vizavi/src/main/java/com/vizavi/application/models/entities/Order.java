@@ -21,8 +21,8 @@ public class Order {
     @Column(name = "price")
     private double price;
 
-    @ManyToOne
-    @Column(fetch = FetchType.LAZY)
-    //@JoinColumn (name = "customer_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @Column
+    @JoinColumn (name = "customer_id")
     private User user;
 }
