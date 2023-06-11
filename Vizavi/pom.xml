@@ -8,11 +8,11 @@
 		<version>3.1.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.motorcycle.shop</groupId>
-	<artifactId>Shop</artifactId>
+	<groupId>com.vizavi</groupId>
+	<artifactId>Vizavi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Shop</name>
-	<description>Motorcycle Shop </description>
+	<name>Vizavi</name>
+	<description>Vizavi </description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
