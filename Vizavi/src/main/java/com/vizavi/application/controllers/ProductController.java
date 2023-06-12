@@ -1,6 +1,7 @@
 package com.vizavi.application.controllers;
 
 import com.vizavi.application.models.dtos.ProductDTO;
+import com.vizavi.application.models.entities.Product;
 import com.vizavi.application.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+
+import static org.hibernate.id.enhanced.StandardOptimizerDescriptor.log;
 
 
 @Validated
@@ -32,8 +35,18 @@ public class ProductController {
         return ResponseEntity.ok(productService.updateProductById(productId, productDTO));
     }
 
-    @GetMapping
-    public ResponseEntity<List<ProductDTO>> getAllProducts() {
+    @GetMapping("/filter")
+    public ResponseEntity<List<ProductDTO>> findProductByNameAndTypeAndPrice(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String type,
+            @RequestParam(required = false) Double price
+    ) {
+        return ResponseEntity.ok(productService.findProductByNameAndTypeAndPrice(name, type, price));
+    }
+
+    @GetMapping("api/products")
+    public ResponseEntity<List<ProductDTO>>getAllProducts() {
+        log.info("Products retrived");
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
