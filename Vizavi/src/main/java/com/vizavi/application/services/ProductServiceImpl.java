@@ -66,5 +66,13 @@ public class ProductServiceImpl implements ProductService {
         log.info("Product with id " + productId + " was deleted.");
         productRepository.deleteById(productId);
     }
-}
 
+    private void fromProductEntityToProductDTO(List<ProductDTO> productDTOS, Product product) {
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setId(product.getId());
+        productDTO.setName(product.getName());
+        productDTO.setType(product.getType());
+        productDTO.setPrice(product.getPrice());
+        productDTOS.add(productDTO);
+    }
+}
