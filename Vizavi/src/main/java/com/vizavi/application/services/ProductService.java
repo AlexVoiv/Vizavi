@@ -8,7 +8,7 @@ public interface ProductService {
     ProductDTO createProduct(ProductDTO productDTO);
 
     List<ProductDTO> getAllProducts();
-    List<ProductDTO>findProductByNameAndTypeAndPrice(String name, String type, double price);
+    List<ProductDTO>findProductByNameAndTypeAndPrice(String name, String productType, double price);
 
     ProductDTO updateProductById(long productId, ProductDTO productDTO);
 

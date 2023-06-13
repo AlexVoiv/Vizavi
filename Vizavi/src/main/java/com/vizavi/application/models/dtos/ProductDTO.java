@@ -13,6 +13,8 @@ public class ProductDTO implements Serializable {
     @NotBlank(message = "name must not be blank")
     private String name;
 
+    @NotBlank(message = "productType must not be blank")
+    private String type;
     @NotBlank(message = "description must not be blank")
     private String description;
 

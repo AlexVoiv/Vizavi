@@ -44,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
 
         List<Product> products = productRepository.findProductByNameAndTypeAndPrice(name, type, price);
         List<ProductDTO> productDTOList = new ArrayList<>();
-        products.forEach(product -> productDTOList.add(fromProductEntityToProductDTO(product)));
+        products.forEach(product -> fromProductEntityToProductDTO(productDTOList, product));
         return productDTOList;
     }
 
@@ -67,12 +67,13 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(productId);
     }
 
-    private void fromProductEntityToProductDTO(List<ProductDTO> productDTOS, Product product) {
+    private ProductDTO fromProductEntityToProductDTO(List<ProductDTO> productDTOS, Product product) {
         ProductDTO productDTO = new ProductDTO();
-        productDTO.setId(product.getId());
+        productDTO.setProductId(product.getId());
         productDTO.setName(product.getName());
         productDTO.setType(product.getType());
         productDTO.setPrice(product.getPrice());
         productDTOS.add(productDTO);
+        return productDTO;
     }
 }
