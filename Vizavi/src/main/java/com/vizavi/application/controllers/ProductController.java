@@ -1,20 +1,18 @@
 package com.vizavi.application.controllers;
 
 import com.vizavi.application.models.dtos.ProductDTO;
-import com.vizavi.application.models.entities.Product;
 import com.vizavi.application.services.ProductService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-import static org.hibernate.id.enhanced.StandardOptimizerDescriptor.log;
 
 
-
+@Slf4j
 @Validated
 @RestController
 @RequestMapping("/api/products")
