@@ -8,9 +8,11 @@ public interface ProductService {
     ProductDTO createProduct(ProductDTO productDTO);
 
     List<ProductDTO> getAllProducts();
+    List<ProductDTO>findProductByNameAndTypeAndPrice(String name, String type, double price);
 
     ProductDTO updateProductById(long productId, ProductDTO productDTO);
 
     void deleteProductById(long productId);
+
 }
 

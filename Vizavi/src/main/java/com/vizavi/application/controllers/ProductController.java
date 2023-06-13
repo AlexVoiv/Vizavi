@@ -14,6 +14,7 @@ import java.util.List;
 import static org.hibernate.id.enhanced.StandardOptimizerDescriptor.log;
 
 
+
 @Validated
 @RestController
 @RequestMapping("/api/products")

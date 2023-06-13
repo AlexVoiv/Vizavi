@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,10 +19,10 @@ public class ProductServiceImpl implements ProductService {
     private final ObjectMapper objectMapper;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository, ObjectMapper objectMapper){
+    public ProductServiceImpl(ProductRepository productRepository, ObjectMapper objectMapper) {
         this.productRepository = productRepository;
         this.objectMapper = objectMapper;
-}
+    }
 
     @Override
     public ProductDTO createProduct(ProductDTO productDTO) {
@@ -36,6 +37,15 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll().stream()
                 .map(product -> objectMapper.convertValue(product, ProductDTO.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ProductDTO> findProductByNameAndTypeAndPrice(String name, String type, double price) {
+
+        List<Product> products = productRepository.findProductByNameAndTypeAndPrice(name, type, price);
+        List<ProductDTO> productDTOList = new ArrayList<>();
+        products.forEach(product -> productDTOList.add(fromProductEntityToProductDTO(product)));
+        return productDTOList;
     }
 
     @Override
